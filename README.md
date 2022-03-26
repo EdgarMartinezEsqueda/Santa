@@ -1,4 +1,5 @@
-# Santa
+# Programación concurrente
+## Problema de Santa Claus
 
 Este programa usa hilos (Thread) para representar el problema de Santa Claus en Python
 
