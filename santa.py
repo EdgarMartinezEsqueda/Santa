@@ -5,9 +5,7 @@ import random
 
 # SEMAFOROS, los números son el valor inicial del contador 
 semSanta = Semaphore(0) # Semáforo de Santa
-semRenos = Semaphore(9) # Semáforos de los renos
-semAyudaDuendes = Semaphore(3) # Semáforo para cuando pidan ayuda los renos
-semDuendes = Semaphore(0) # Semáforos duendes
+semAyudaDuendes = Semaphore(3) # Semáforo para cuando pidan ayuda los duendes
 
 #VARIABLES
 nRenos = 0 # Variable para contabilizar el numero de renos que han llegado
@@ -32,8 +30,6 @@ def santa():
                 time.sleep(random.randint (1,3))   
                 semAyudaDuendes.release() # desbloqueas para la llegada de 3 duendes mas
             print("------ SANTA TERMINA DE AYUDAR A LOS DUENDES")
-            for i in range(3):  #Ahora se liberan 3 espacios para duendes
-                semDuendes.release()
     navidad()
 
 # Hilo de los renos
@@ -43,7 +39,6 @@ def reno():
         time.sleep(random.randint(5,7))    
         nRenos += 1
         print("Reno {} listo y enganchado en el trineo, es el {}". format(nombreRenos[nRenos-1], nRenos))
-        semRenos.acquire()
     print("--- LOS 9 RENOS ESTÁN LISTOS ESPERANDO A SANTA")
     semSanta.release() # Libera el semaforo, aumenta el contador -> santa se despierta
 
@@ -65,8 +60,6 @@ def duende():
 # Santa prepara el trineo y se va a dormir
 def navidad():
     global regalosEntregados
-    for _ in range(9):  #Libreramos los 9 renos
-        semRenos.release() 
     print(" ---- SANTA SE VA EN SU TRINEO")
     print(" ... DESPUES DE ESTO, SANTA VUELVE A DORMIR")
     regalosEntregados = True
