@@ -3,6 +3,13 @@ from threading import Thread, Semaphore
 import time
 import random
 import sys 
+#Librerías para lo gráfico
+from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget, QFileDialog, QGridLayout
+from PyQt5.QtGui import QPixmap
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtGui import QCursor
+
+
 
 # SEMAFOROS, los números son el valor inicial del contador 
 semSanta = Semaphore(0) # Semáforo de Santa
@@ -25,7 +32,7 @@ def santa():
     global nRenos
     global duendesEsperando
     print("---- SANTA SE HA PUESTO A DORMIR")
-    while True:
+    for _ in range (7):
         semSanta.acquire() # Decrementa el samaforo, pero como el contador interno no puede ser menor a 0, esperará hasta que se libere
         print("---- SANTA HA DESPERTADO")
         if duendesEsperando == 3:   #Si lo están esperando 3 duendes...
@@ -63,7 +70,7 @@ def duende():
     num = nDuendes
     nDuendes += 1
     print("Duende {} llegando al taller".format (nombreDuendes[num]))
-    while True:
+    for _ in range(2):
         time.sleep(random.randint (1,5))
         semAyudaDuendes.acquire() # decrementa el contador de que los duendes ocupan a Santa... ¿Por qué? Porque si no lo tuviera, llegarían más y más duendes sin parar
         duendesEsperando += 1
@@ -81,7 +88,6 @@ def navidad():
         semRenos.release() 
     print(" ---- SANTA SE VA EN SU TRINEO")
     print(" ... DESPUES DE ESTO, SANTA VUELVE A DORMIR")
-    sys.exit()  #Comentar si se quiere hacer infinitamente
 
 
 # Array de hilos
@@ -100,3 +106,4 @@ for t in threads:
 # Esperamos a que se completen todos los hilos
 for t in threads:
     t.join()
+print("A")
