@@ -29,6 +29,6 @@ El programa está construido con Python en su totalidad
 
 ## Autores🖋️
 
-- Luis Fernando Barajaz Gómez [Fernando-Barajas-Gomez](https://github.com/Fernando-Barajas-Gomez)
+- Fernando Barajaz Gómez [Fernando-Barajas-Gomez](https://github.com/Fernando-Barajas-Gomez)
 - Luis Jaime Fernández Dominguez [LuisJaimeFD](https://github.com/LuisJaimeFD)
 - Edgar Alejandor Martínez Esqueda [EdgarMartinezEsqueda](https://github.com/EdgarMartinezEsqueda)
