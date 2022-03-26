@@ -3,13 +3,6 @@ from threading import Thread, Semaphore
 import time
 import random
 import sys 
-#Librerías para lo gráfico
-from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget, QFileDialog, QGridLayout
-from PyQt5.QtGui import QPixmap
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtGui import QCursor
-
-
 
 # SEMAFOROS, los números son el valor inicial del contador 
 semSanta = Semaphore(0) # Semáforo de Santa
