@@ -10,7 +10,7 @@ Este programa usa hilos (Thread) para representar el problema de Santa Claus en 
 python interfaz.py
 ```
 
-## Descripción del problema
+## Descripción del problema ❓
 Santa Claus pasa su tiempo de descanso, durmiendo, en su casa del Polo Norte. Para poder despertarlo, se ha de cumplir una de las dos condiciones siguientes:
 - Que todos los renos de los que dispone, nueve en total, hayan vuelto de vacaciones.
 - Que algunos de sus duendes necesiten su ayuda para fabricar un juguete.
