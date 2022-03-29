@@ -96,4 +96,3 @@ grid.addWidget(botonIniciar,3,2,1,2)
 #----------------EJECUCIÓN----------------
 ventana.setLayout(grid)
 sys.exit(app.exec())
-
