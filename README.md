@@ -3,7 +3,12 @@
 
 Este programa usa hilos (Thread) para representar el problema de Santa Claus en Python
 
-**¡¡El programa cuenta con interfaz gráfica!!** (Función aún no disponible)
+**¡¡El programa cuenta con interfaz gráfica!!**
+
+## Ejecutar el programa ▶
+```
+python interfaz.py
+```
 
 ## Descripción del problema
 Santa Claus pasa su tiempo de descanso, durmiendo, en su casa del Polo Norte. Para poder despertarlo, se ha de cumplir una de las dos condiciones siguientes:
