@@ -20,23 +20,19 @@ nombreRenos = ["RUDOLPH", "BLITZEN", "DONDER", "CUPID", "COMET", "VIXEN", "PRANC
 def santa(label, accion, cntCentral):
     global nRenos
     global duendesEsperando
-    #print("---- SANTA ESTÁ DORMIDO")
     while nRenos < 9:
         semSanta.acquire() # Decrementa el samaforo, pero como el contador interno no puede ser menor a 0, esperará hasta que se libere
-        #print("---- SANTA HA DESPERTADO")
         label.setText("Santa\nDespierto")
         accion.setText("Santa se ha despertado")
         if duendesEsperando == 3:   #Si lo están esperando 3 duendes...
             duendesEsperando = 0    #Se resetea el contador
-            imgAyuda = QPixmap("imagenes/ayudaDuendes.jpg")
+            imgAyuda = QPixmap("imagenes/ayudando_duendes.png")
             imgAyuda = imgAyuda.scaledToHeight(360) #redimensionar la imagen
             cntCentral.setPixmap(imgAyuda)
             for i in range(3):  #Liberamos
-                #print("---- SANTA AYUDA AL DUENDE {} DE 3".format(i + 1))
                 accion.setText("Santa ayuda al duende {} de 3".format(i + 1))
-                time.sleep(random.randint (1,3))   
+                time.sleep(3)   
                 semAyudaDuendes.release() # desbloqueas para la llegada de 3 duendes mas
-            #print("------ SANTA TERMINA DE AYUDAR A LOS DUENDES")
             accion.setText("Santa termina de ayudar a los duendes")
             label.setText("Santa:\nDormido")
     navidad(accion, cntCentral)
@@ -48,12 +44,10 @@ def reno(label, accion, cntCentral):
         time.sleep(random.randint(5,7))    
         nRenos += 1
         label.setText("Renos:\n{}".format(nRenos))
-        # print("Reno {} listo y enganchado en el trineo, es el {}". format(nombreRenos[nRenos-1], nRenos))
         accion.setText("Reno {} listo y enganchado en el trineo, es el {}". format(nombreRenos[nRenos-1], nRenos))
         imgReno = QPixmap("imagenes/renos.png")
-        imgReno = imgReno.scaledToHeight(480) #redimensionar la imagen
+        imgReno = imgReno.scaledToHeight(240) #redimensionar la imagen
         cntCentral.setPixmap(imgReno)
-    # print("--- LOS 9 RENOS ESTÁN LISTOS ESPERANDO A SANTA")
     accion.setText("LOS 9 RENOS ESTÁN LISTOS ESPERANDO A SANTA")
     semSanta.release() # Libera el semaforo, aumenta el contador -> santa se despierta
 
@@ -63,7 +57,7 @@ def duende(label, accion, cntCentral):
     global duendesEsperando
     global regalosEntregados
     while not regalosEntregados or nRenos < 9:
-        time.sleep(random.randint (1,5))
+        time.sleep(random.randint (1,4))
         semAyudaDuendes.acquire() # decrementa el contador de que los duendes ocupan a Santa... ¿Por qué? Porque si no lo tuviera, llegarían más y más duendes sin parar
         duendesEsperando += 1
         label.setText("Duendes:\n{}".format(duendesEsperando))
@@ -71,10 +65,8 @@ def duende(label, accion, cntCentral):
         imgDuentes = imgDuentes.scaledToHeight(480) #redimensionar la imagen
         cntCentral.setPixmap(imgDuentes)
         if duendesEsperando < 3:  #Si aún no llegan a ser 3 duendes... se agrega a la espera
-            # print("Duende esperando, es el {} en la fila".format(duendesEsperando))
             accion.setText("Duende esperando, es el {} en la fila".format(duendesEsperando))
         elif duendesEsperando == 3:   #Cuando sean los 3, liberan el semáforo de Santa
-            # print("Llega el 3er duende, entre los tres llaman a Santa!")
             accion.setText("Llega el 3er duende, entre los tres llaman a Santa!")
             semSanta.release() # Libera el semaforo, aumenta el contador -> santa se despierta
             label.setText("Duendes:\n0")
@@ -82,8 +74,6 @@ def duende(label, accion, cntCentral):
 # Santa prepara el trineo y se va a dormir
 def navidad(accion, cntCentral):
     global regalosEntregados
-    # print(" ---- SANTA SE VA EN SU TRINEO")
-    # print(" ... DESPUES DE ESTO, SANTA VUELVE A DORMIR")
     regalosEntregados = True
     accion.setText("SANTA SE VA EN SU TRINEO")
     time.sleep(1)
