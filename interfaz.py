@@ -18,15 +18,15 @@ grid = QGridLayout()
 
 #----------------IMÁGENES----------------
 ctnCentral = QLabel()
-ctnCentral.setStyleSheet("background: #ff05ef")
-# imgcaliz = QPixmap("imagenes/renos.png")
-# imgcaliz = imgcaliz.scaledToHeight(80) #redimensionar la imagen
+ctnCentral.setStyleSheet("background: #f2f2f2")
+# imgcaliz = QPixmap("imagenes/santaRegalo.jpg")
+# imgcaliz = imgcaliz.scaledToHeight(360) #redimensionar la imagen
 # ctnCentral.setPixmap(imgcaliz)
 
 #----------------GIFS----------------
-# gif = QMovie("imagenes/repartiendo.gif")
-# ctnCentral.setMovie(gif)
-# gif.start()
+gif = QMovie("imagenes/repartiendo.gif")
+ctnCentral.setMovie(gif)
+gif.start()
 
 #renos
 ctnRenos = QLabel()
@@ -68,26 +68,30 @@ tituloRenos = QLabel('Renos\n0')
 tituloRenos.setStyleSheet("font-size:20px; font-family:'sans-serif'; text-align: center;")
 tituloRenos.setAlignment(Qt.AlignCenter)
 
+tituloAccion = QLabel('')
+tituloAccion.setStyleSheet("font-size:15px; font-family:'sans-serif'; text-align: center;")
+tituloAccion.setAlignment(Qt.AlignCenter)
+
 #Agregamos los elementos al grid
 grid.addWidget(tituloSanta,0,5)
 grid.addWidget(tituloDuendes,0,1)
 grid.addWidget(tituloRenos,0,3)
+grid.addWidget(tituloAccion,2,1,1,4)
 
 grid.setRowStretch(0, 1)
 grid.setRowStretch(1, 5)
 grid.setRowStretch(2, 1)
 
 #----------------BOTONES----------------
-botonSalir = QPushButton("Salir")
-botonSalir.setStyleSheet("width: 20px;")
+# botonSalir = QPushButton("Salir")
+# botonSalir.setStyleSheet("width: 20px;")
 botonIniciar = QPushButton("Iniciar")
-botonIniciar.clicked.connect(lambda: santa.inicio(tituloSanta, tituloDuendes, tituloRenos, ctnCentral))
-# botonIniciar.clicked.connect(santa.inicio)
+botonIniciar.clicked.connect(lambda: santa.inicio(tituloSanta, tituloDuendes, tituloRenos, tituloAccion, ctnCentral))
 botonIniciar.setStyleSheet("width: 20px;")
 
 #Agregamos los elementos al grid
-grid.addWidget(botonSalir,2,2)
-grid.addWidget(botonIniciar,2,3)
+# grid.addWidget(botonSalir,3,2)
+grid.addWidget(botonIniciar,3,2,1,2)
 
 #----------------EJECUCIÓN----------------
 ventana.setLayout(grid)
